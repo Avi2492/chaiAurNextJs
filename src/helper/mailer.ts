@@ -1,7 +1,13 @@
+import User from "@/models/userModels";
 import nodemailer from "nodemailer";
-
+import bcryptjs from "bcryptjs";
 export const sendEmail = async ({ email, emailType, userId }: any) => {
   try {
+    const hashedToken = await bcryptjs.hash(userId.toString(), 10);
+    if (emailType === "VERIFY") {
+      await User.findByIdAndUpdate(userId, { verifyToken });
+    }
+
     const transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
       port: 587,
