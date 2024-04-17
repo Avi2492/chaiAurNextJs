@@ -23,8 +23,8 @@ export default function SignupPage() {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/signup", user);
-      console.log("Signup Success", response.data);
-      toast.success("Now Login with email and password");
+      // console.log("Signup Success", response.data);
+      // toast.success("Now Login with email and password");
       router.push("/login");
     } catch (error: any) {
       console.log("Signup Failed", error.message);
@@ -62,7 +62,7 @@ export default function SignupPage() {
               Sign In
             </Link>
           </p>
-          <form action="#" method="POST" className="mt-8">
+          <form className="mt-8">
             <div className="space-y-5">
               <div>
                 <label
